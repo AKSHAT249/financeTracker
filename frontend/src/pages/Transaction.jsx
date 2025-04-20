@@ -11,18 +11,25 @@ const Transaction = () => {
   const ITEMS_PER_PAGE = 4;
   const [currentPage, setCurrentPage] = useState(1);
 
+  const URL = "https://financetracker-6s07.onrender.com";
+
+  
+
+
   useEffect(() => {
     fetchTransactions();
   }, []);
 
   const fetchTransactions = async () => {
-    const response = await axios.get("http://localhost:4000/api/transaction/");
+    const response = await axios.GET(`${URL}/api/transaction/`);
+
+    // const response = await axios.get("http://localhost:4000/api/transaction/");
     setTransactions(response.data.data || []);
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/transaction/${id}`);
+      await axios.delete(`${URL}/api/transaction/${id}`);
       alert("Transaction deleted successfully");
       fetchTransactions();
     } catch (error) {
@@ -37,7 +44,7 @@ const Transaction = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:4000/api/transaction/${editData._id}`, editData);
+      await axios.put(`${URL}/api/transaction/${editData._id}`, editData);
       setShowModal(false);
       fetchTransactions();
       alert("Transaction updated!");

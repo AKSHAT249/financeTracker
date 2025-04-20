@@ -25,7 +25,10 @@ const AddTransaction = () => {
         e.preventDefault();
         console.log("Submitted Data:", formData);
 
-        const response = await axios.post("http://localhost:4000/api/transaction/",formData);
+        const URL = "https://financetracker-6s07.onrender.com";
+
+        // const response = await axios.post("http://localhost:4000/api/transaction/",formData);
+        const response = await axios.post(`${URL}/api/transaction/`,formData);
 
         alert("Data Added Successfully");
         navigate("/transaction");

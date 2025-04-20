@@ -15,7 +15,13 @@ const Chart = () => {
     }, []);
     
     const fetchTransactions = async () => {
-    const response = await axios.get("http://localhost:4000/api/transaction/");
+
+        const URL = "https://financetracker-6s07.onrender.com";
+
+        // const response = await axios.post("http://localhost:4000/api/transaction/",formData);
+        const response = await axios.get(`${URL}/api/transaction/`);
+
+        
     setTransactions(response.data.data || []);
     };
   return (
