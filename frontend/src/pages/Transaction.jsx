@@ -21,7 +21,7 @@ const Transaction = () => {
   }, []);
 
   const fetchTransactions = async () => {
-    const response = await axios.GET(`${URL}/api/transaction/`);
+    const response = await axios.get(`${URL}/api/transaction/`);
 
     // const response = await axios.get("http://localhost:4000/api/transaction/");
     setTransactions(response.data.data || []);
